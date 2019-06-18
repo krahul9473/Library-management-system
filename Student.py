@@ -1,11 +1,6 @@
-#Code for  student
-print("Enter your roll number")
-while True:
-    try:
-        roll=int(input())
-    except NameError, ValueError:
-        continue
-print ("Enter your password")
-password=input()
+class Student:
 
-# If username and password present in database, welcome them
+    def __init__(self,name,roll_num,password):
+        self.name = name
+        self.roll_num = roll_num
+        self.password = password
