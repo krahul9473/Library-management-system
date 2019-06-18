@@ -1,7 +1,7 @@
 import pandas as pd
-
-from Student import Student
-from Faculty import Faculty
+from datetime import datetime
+import Student
+import Faculty
 
 print("Welcome to the Library.")
 print("Please Choose from the following \n")
@@ -9,6 +9,9 @@ print(" 1. Student")
 print(" 2. Faculty")
 print(" 3. Library Staff")
 print(" 4. Library Rules \n")
+now=datetime.now()
+print ("%02d-%02d-%04d\t%02d:%02d:%02d\n" %(now.day, now.month, now.year, now.hour, now.minute, now.second))
+#This will give a static time. Perhaps somehow, can we make it live
 
 while True:
     try :
@@ -34,6 +37,6 @@ if choice == 1:
     df = pd.read_csv(csv_path)
      
     #still need to add further code for authentication
-    #also we can import tim module for dates
+
 
 
