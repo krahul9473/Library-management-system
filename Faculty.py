@@ -1,14 +1,18 @@
-#Code for faculty
-#Code for  student
-print("Enter your employee number")
-while True:
-    try:
-        emp_no=int(input())
-    except NameError, ValueError:
-        continue
-print ("Enter your password")
-password=input()
+import Main Screen
+class Faculty(User):
 
-# If username and password present in database, welcome them
+    #init of User derived, so no need for init again
+    def runFacultyModule():
+        
 
+            print("Enter your student employee number: \n")
+            r_num = input()
 
+            print("Enter your password : \n")
+            key = input()
+
+            csv_path = 'Faculty.csv'
+
+            df = pd.read_csv(csv_path)
+            
+            #still need to add further code for authentication

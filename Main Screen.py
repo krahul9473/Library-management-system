@@ -23,20 +23,24 @@ while True:
     else :
         if choice in ([1,2,3,4]):
             break
+    
+    if choice == 1:
+        #somehow call runStudentModule function of student class
+        pass
 
-if choice == 1:
+class User(object):
+    def __init__(self, id, password):
+        self.id=id
+        self.password=password
+    def issueBook(self, bookNum):
+        pass
+    def reissueBook(self, bookNum):
+        pass
+    def returnBook(self, bookNum):
+        pass
 
-    print("Enter your student roll number: \n")
-    r_num = input()
+    
 
-    print("Enter your password : \n")
-    key = input()
-
-    csv_path = 'Student.csv'
-
-    df = pd.read_csv(csv_path)
-     
-    #still need to add further code for authentication
 
 
 

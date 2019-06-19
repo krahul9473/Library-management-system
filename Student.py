@@ -1,6 +1,18 @@
-class Student:
+import Main Screen
+class Student(User):
 
-    def __init__(self,name,roll_num,password):
-        self.name = name
-        self.roll_num = roll_num
-        self.password = password
+    #init of User derived, so no need for init again
+    def runStudentModule():
+        
+
+            print("Enter your student roll number: \n")
+            r_num = input()
+
+            print("Enter your password : \n")
+            key = input()
+
+            csv_path = 'Student.csv'
+
+            df = pd.read_csv(csv_path)
+            
+            #still need to add further code for authentication
