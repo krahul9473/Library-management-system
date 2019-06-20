@@ -1,7 +1,7 @@
 import pandas as pd
 from datetime import datetime
-import Student
-import Faculty
+from Sudent import Student
+from Faculty import Faculty
 
 print("Welcome to the Library.")
 print("Please Choose from the following \n")
