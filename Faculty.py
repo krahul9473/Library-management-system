@@ -1,18 +1,17 @@
 import Main Screen
 class Faculty(User):
+    issuePeriod=15
+    maxReissues=5
 
-    #init of User derived, so no need for init again
-    def runFacultyModule():
+    def suggestBook(self):
+
+    def runFacultyModule(self):
+        print ("Welcome, " + ) #Put the name from database here
+        print('''What would you like to do?
+        1. Issue new book
+        2. Reissue a book
+        3. Return a book
+        4. Suggest a new book for department''')
         
 
-            print("Enter your student employee number: \n")
-            r_num = input()
-
-            print("Enter your password : \n")
-            key = input()
-
-            csv_path = 'Faculty.csv'
-
-            df = pd.read_csv(csv_path)
             
-            #still need to add further code for authentication

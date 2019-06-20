@@ -1,18 +1,15 @@
-import Main Screen
+from Main Screen import User
 class Student(User):
-
-    #init of User derived, so no need for init again
+    issuePeriod=7
+    maxReissues=3
+   
     def runStudentModule():
+        print ("Welcome, " + ) #Put the name from database here
+        print('''What would you like to do?
+        1. Issue new book
+        2. Reissue a book
+        3. Return a book''')
+    
         
 
-            print("Enter your student roll number: \n")
-            r_num = input()
-
-            print("Enter your password : \n")
-            key = input()
-
-            csv_path = 'Student.csv'
-
-            df = pd.read_csv(csv_path)
             
-            #still need to add further code for authentication
