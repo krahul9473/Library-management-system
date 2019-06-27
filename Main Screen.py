@@ -49,24 +49,39 @@ while True:
         #still need to add further code for authentication
 
         #if authenticated:-
-        st=Student(r_num, key)
-        st.runStudentModule() #do all required procedures here
-    elif choice==2:
+            st=Student(r_num, key)
+            st.runStudentModule() #do all required procedures here
+        
+        
+    elif choice == 2:
         print("Enter your employee number: \n")
         emp_num = input()
 
         print("Enter your password : \n")
         key = input()
-
         csv_path = 'Faculty.csv'
-
         df = pd.read_csv(csv_path)
         
         #still need to add further code for authentication
-
         #if authenticated:-
-        fac=Faculty(emp_num, key)
-        st.runFacultyModule() #do all required procedures here
+            fac=Faculty(emp_num, key)
+            fac.runFacultyModule() #do all required procedures here
+     
+    elif choice == 3:
+        print ("Library admin password")
+        password=input()
+        #if password matches the one in database
+            libstaff=LibSatff()
+            libstaff.runLibStaffModule()
+            
+    else:
+        print('''\t\t\t\tLIBRARY RULES
+        1. Books are issued for a period of 7 days for students and 15 days for faculty.
+        2. Fine for overdue books is Rs. 10 per day.
+        3. Maximum reissues allowed are 3 for students and 5 for faculty''')
+        
+        
+        
     
         
 
