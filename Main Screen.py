@@ -1,8 +1,8 @@
-import pandas as pd
 from datetime import datetime
 from Sudent import Student
 from Faculty import Faculty
 import sqlite3
+
 connection=sqlite3.connect("Student.db")
 
 cursor=connection.cursor()
@@ -51,20 +51,11 @@ while True:
         cursor.execute("SELECT Password FROM Student WHERE RollNo={}".format(r_num))
         
         #checking if roll number in database
-        if (cursor.fetchall==None):
+        if (cursor.fetchall == None):
             
             print("This roll number doesn't exist")
-            #if password is correct
-            elif(key==cursor.fetchall()):
-                #code for correct password follows
-
-        csv_path = 'Student.csv'
-
-        df = pd.read_csv(csv_path)
-        
-        #still need to add further code for authentication
-
-        #if authenticated:-
+            
+        elif(key == cursor.fetchall()): #if password is correct
             st=Student(r_num, key)
             st.runStudentModule() #do all required procedures here
         
@@ -75,8 +66,6 @@ while True:
 
         print("Enter your password : \n")
         key = input()
-        csv_path = 'Faculty.csv'
-        df = pd.read_csv(csv_path)
         
         #still need to add further code for authentication
         #if authenticated:-
