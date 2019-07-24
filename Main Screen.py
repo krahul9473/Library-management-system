@@ -2,6 +2,11 @@ import pandas as pd
 from datetime import datetime
 from Sudent import Student
 from Faculty import Faculty
+import sqlite3
+connection=sqlite3.connect("Student.db")
+
+cursor=connection.cursor()
+cursor.execute("CREATE TABLE Student(RollNo INT,Password Text,Name TEXT)")
 
 print("Welcome to the Library.")
 print("Please Choose from the following \n")
@@ -38,9 +43,20 @@ while True:
     if choice == 1:
         print("Enter your student roll number: \n")
         r_num = input()
+        
 
         print("Enter your password : \n")
         key = input()
+        #checking rollno
+        cursor.execute("SELECT Password FROM Student WHERE RollNo={}".format(r_num))
+        
+        #checking if roll number in database
+        if (cursor.fetchall==None):
+            
+            print("This roll number doesn't exist")
+            #if password is correct
+            elif(key==cursor.fetchall()):
+                #code for correct password follows
 
         csv_path = 'Student.csv'
 
@@ -84,7 +100,7 @@ while True:
         
     
         
-
+connection.commit()
     
 
 
