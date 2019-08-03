@@ -3,16 +3,19 @@ from Sudent import Student
 from Faculty import Faculty
 import sqlite3
 
-connection1=sqlite3.connect("Student.db")
-connection2=sqlite3.connect("faculty.db")
+connection=sqlite3.connect("Student.db")
 
-#cursor objects
-cursor1=connection1.cursor()
-cursor2=connection2.cursor()
+
+
+#cursor object
+cursor=connection.cursor()
+
+
 
 # execute only once
-cursor1.execute("CREATE TABLE Student(RollNo INT,Password Text,Name TEXT)")
-cursor2.execute("CREATE TABLE faculty(EmployeeNumber INT,Name TEXT,BooksIssued INT,Password TEXT)")
+cursor.execute("CREATE TABLE Student(RollNo INT,Password Text,Name TEXT)")
+cursor.execute("CREATE TABLE faculty(EmployeeNumber INT,Name TEXT,BooksIssued INT,Password TEXT)")
+cursor.execute('CREATE TABLE staff(Username TEXT,Password TEXT)')
 
 print("Welcome to the Library.")
 print("Please Choose from the following \n")
@@ -54,10 +57,10 @@ while True:
         print("Enter your password : \n")
         key = input()
         #checking rollno
-        cursor1.execute("SELECT Password FROM Student WHERE RollNo={}".format(r_num))
+        cursor.execute("SELECT Password FROM Student WHERE RollNo={}".format(r_num))
         
         #checking if roll number in database
-        j=cursor1.fetchone()
+        j=cursor.fetchone()
         if(j[0]==None):
                        
             print("This roll number doesn't exist")
@@ -74,8 +77,8 @@ while True:
         print("Enter your password : \n")
         key = input()
         
-        cursor2.execute("SELECT Password FROM  faculty WHERE EmployeeNumber='{}'".format(emp_num))
-        k=cursor2.fetchone()
+        cursor.execute("SELECT Password FROM  faculty WHERE EmployeeNumber='{}'".format(emp_num))
+        k=cursor.fetchone()
         if(k[0]==None):
             print("This employee number does not exist")
         elif(key==k[0]):
@@ -88,7 +91,16 @@ while True:
      
     elif choice == 3:
         print ("Library admin password")
+        print("Enter Username")
+        get_user=input()
         password=input()
+        cursor.execute('SELECT Password FROM staff WHERE Username="{}"'.format(get_user))
+        l=cursor.fetchone()
+        if(l[0]==None):
+            print("No such user ")
+        elif(l[0]==password):
+            #code for correct password
+
         #if password matches the one in database
             libstaff=LibSatff()
             libstaff.runLibStaffModule()
@@ -103,8 +115,8 @@ while True:
         
     
         
-connection1.commit()
-connection2.commit()
+connection.commit()
+
     
 
 
