@@ -103,7 +103,8 @@ while True:
         
     
         
-connection.commit()
+connection1.commit()
+connection2.commit()
     
 
 
