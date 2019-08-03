@@ -3,10 +3,16 @@ from Sudent import Student
 from Faculty import Faculty
 import sqlite3
 
-connection=sqlite3.connect("Student.db")
+connection1=sqlite3.connect("Student.db")
+connection2=sqlite3.connect("faculty.db")
 
-cursor=connection.cursor()
-cursor.execute("CREATE TABLE Student(RollNo INT,Password Text,Name TEXT)")
+#cursor objects
+cursor1=connection1.cursor()
+cursor2=connection2.cursor()
+
+# execute only once
+cursor1.execute("CREATE TABLE Student(RollNo INT,Password Text,Name TEXT)")
+cursor2.execute("CREATE TABLE faculty(EmployeeNumber INT,Name TEXT,BooksIssued INT,Password TEXT)")
 
 print("Welcome to the Library.")
 print("Please Choose from the following \n")
@@ -48,14 +54,15 @@ while True:
         print("Enter your password : \n")
         key = input()
         #checking rollno
-        cursor.execute("SELECT Password FROM Student WHERE RollNo={}".format(r_num))
+        cursor1.execute("SELECT Password FROM Student WHERE RollNo={}".format(r_num))
         
         #checking if roll number in database
-        if (cursor.fetchall == None):
-            
+        j=cursor1.fetchone()
+        if(j[0]==None):
+                       
             print("This roll number doesn't exist")
             
-        elif(key == cursor.fetchall()): #if password is correct
+        elif(key ==j[0]): #if password is correct
             st=Student(r_num, key)
             st.runStudentModule() #do all required procedures here
         
@@ -66,6 +73,13 @@ while True:
 
         print("Enter your password : \n")
         key = input()
+        
+        cursor2.execute("SELECT Password FROM  faculty WHERE EmployeeNumber='{}'".format(emp_num))
+        k=cursor2.fetchone()
+        if(k[0]==None):
+            print("This employee number does not exist")
+        elif(key==k[0]):
+            #code for correct password
         
         #still need to add further code for authentication
         #if authenticated:-
